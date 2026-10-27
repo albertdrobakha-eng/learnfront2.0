@@ -1,13 +1,12 @@
 <script setup>
-
+defineProps(['titles', 'active']);
 </script>
 <template>
     <div class="tabs is-centered">
-     <ul>
-        <li class="is-active"><a>Pictures</a></li>
-        <li><a>Music</a></li>
-        <li><a>Videos</a></li>
-        <li><a>Documents</a></li>
-    </ul>
+        <ul>
+            <li v-for="(title,key) in titles" :class="{'is-active': active === key}" @click="$emit('change', key)">
+                <a>{{ title }}</a>
+            </li>
+        </ul>
     </div>
 </template>
